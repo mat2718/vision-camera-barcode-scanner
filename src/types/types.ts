@@ -209,14 +209,40 @@ export interface DriverLicense {
 }
 
 /**
- * @see https://developer.android.com/reference/android/graphics/Rect.html
+ * Rect is an object with four properties: top, left, height, and width, all of which are numbers.
+ * @property {number} top - The top position of the element.
+ * @property {number} left - The x-coordinate of the top-left corner of the rectangle.
+ * @property {number} height - The height of the element.
+ * @property {number} width - The width of the element.
  */
-export interface Rect {
-  bottom: number;
-  left: number;
-  right: number;
+export type Rect = {
+  /** the y coordinate in the exact center of the barcode bounds */
+  boundingCenterY?: number;
+  /** the x coordinate in the exact center of the barcode bounds */
+  boundingCenterX?: number;
+  /** the top of the barcode bounds */
   top: number;
-}
+  /** the left of the barcode bounds */
+  left: number;
+  /** the bottom of the barcode bounds */
+  bottom?: number;
+  /** the right of the barcode bounds */
+  right?: number;
+  /** the height of the barcode bounds */
+  height: number;
+  /** the width of the barcode bounds */
+  width: number;
+  x?: number;
+  y?: number;
+};
+
+/**
+ * Dimensions is an object with a width property that is a number and a height property that is a
+ * number.
+ * @property {number} width - The width of the image in pixels.
+ * @property {number} height - The height of the image in pixels.
+ */
+export type Dimensions = {width: number; height: number};
 
 /**
  * @see https://developer.android.com/reference/android/graphics/Point.html

@@ -20,41 +20,37 @@ Add this to your `babel.config.js`
 [
   'react-native-reanimated/plugin',
   {
-    globals: ['__scanBarCodes'],
+    globals: ['__scanBarcodes'],
   },
-]
+];
 ```
 
 ## Usage
 
-Simply call the `useScanBarcodes()` hook or call `scanBarcodes()` inside of the `useFrameProcessor()` hook. In both cases you will need to pass an array of `BarcodeFormat` to specify the kind of barcode you want to detect.
+Simply call `scanBarcodes()` inside of the `useFrameProcessor()` hook. In both cases you will need to pass an array of `BarcodeFormat` to specify the kind of barcode you want to detect.
 
 > Note: The underlying MLKit barcode reader is only created once meaning that changes to the array will not be reflected in the app.
 
 ```tsx
 import * as React from 'react';
 
-import { StyleSheet, Text } from 'react-native';
-import { useCameraDevices } from 'react-native-vision-camera';
-import { Camera } from 'react-native-vision-camera';
-import { useScanBarcodes, BarcodeFormat } from 'vision-camera-code-scanner';
+import {StyleSheet, Text} from 'react-native';
+import {useCameraDevices} from 'react-native-vision-camera';
+import {Camera} from 'react-native-vision-camera';
+import {scanBarcodes, BarcodeFormat} from 'vision-camera-barcode-scanner';
 
 export default function App() {
   const [hasPermission, setHasPermission] = React.useState(false);
   const devices = useCameraDevices();
   const device = devices.back;
 
-  const [frameProcessor, barcodes] = useScanBarcodes([BarcodeFormat.QR_CODE], {
-    checkInverted: true,
-  });
-
-  // Alternatively you can use the underlying function:
-  //
-  // const frameProcessor = useFrameProcessor((frame) => {
-  //   'worklet';
-  //   const detectedBarcodes = scanBarcodes(frame, [BarcodeFormat.QR_CODE], { checkInverted: true });
-  //   runOnJS(setBarcodes)(detectedBarcodes);
-  // }, []);
+  const frameProcessor = useFrameProcessor(frame => {
+    'worklet';
+    const detectedBarcodes = scanBarcodes(frame, [BarcodeFormat.QR_CODE], {
+      checkInverted: true,
+    });
+    runOnJS(setBarcodes)(detectedBarcodes);
+  }, []);
 
   React.useEffect(() => {
     (async () => {
@@ -102,3 +98,6 @@ See the [contributing guide](CONTRIBUTING.md) to learn how to contribute to the 
 
 MIT
 
+## Credits
+
+Please feel free to check out the original repo here [vision-camera-code-scanner](https://github.com/rodgomesc/vision-camera-code-scanner)

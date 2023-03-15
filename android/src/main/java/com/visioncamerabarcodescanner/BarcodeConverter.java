@@ -101,6 +101,12 @@ public class BarcodeConverter {
     map.putInt("left", rect.left);
     map.putInt("right", rect.right);
     map.putInt("top", rect.top);
+    map.putInt("width", rect.width());
+    map.putInt("height", rect.height());
+    map.putDouble("x", rect.exactCenterX());
+    map.putDouble("y", rect.exactCenterY());
+    map.putInt("boundingBoxCenterX", rect.centerX());
+    map.putInt("boundingBoxCenterY", rect.centerY());
 
     return map;
   }

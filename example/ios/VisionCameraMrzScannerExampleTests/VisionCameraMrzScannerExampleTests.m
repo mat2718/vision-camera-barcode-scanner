@@ -7,11 +7,11 @@
 #define TIMEOUT_SECONDS 600
 #define TEXT_TO_LOOK_FOR @"Welcome to React"
 
-@interface VisionCameraBarcodeScannerExampleTests : XCTestCase
+@interface visioncamerabarcodescannerexampleTests : XCTestCase
 
 @end
 
-@implementation VisionCameraBarcodeScannerExampleTests
+@implementation visioncamerabarcodescannerexampleTests
 
 - (BOOL)findSubviewInView:(UIView *)view matching:(BOOL (^)(UIView *view))test
 {

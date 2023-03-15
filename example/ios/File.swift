@@ -1,6 +1,6 @@
 //
 //  File.swift
-//  VisionCameraBarcodeScannerExample
+//  visioncamerabarcodescannerexample
 //
 
 import Foundation

@@ -1,22 +1,24 @@
+export {
+  AddressType,
+  BarcodeFormat,
+  BarcodeValueType,
+  EmailType,
+  EncryptionType,
+  PhoneType,
+} from './types/types';
 // types.ts
 export type {
   Address,
-  AddressType,
   Barcode,
-  BarcodeFormat,
-  BarcodeValueType,
   CalendarEvent,
   CodeScannerOptions,
   ContactInfo,
   Date,
   DriverLicense,
   Email,
-  EmailType,
-  EncryptionType,
   GeoPoint,
   PersonName,
   Phone,
-  PhoneType,
   Rect,
   Sms,
   UrlBookmark,
@@ -26,6 +28,5 @@ export type {
 export {boundingBoxAdjustToView} from './util/boundingBoxAdjustToView';
 // resolutions.ts
 export {sortFormatsByResolution} from './util/generalUtil';
-
 // wrapper.ts
-export {default as scanBarcode} from './util/wrapper';
+export {default as scanBarcodes} from './util/wrapper';
