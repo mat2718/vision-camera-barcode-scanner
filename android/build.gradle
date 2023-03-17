@@ -75,7 +75,7 @@ dependencies {
   implementation "com.facebook.react:react-native:+"
   implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
   implementation project(":react-native-vision-camera")
-  implementation 'com.google.mlkit:barcode-scanning:17.0.2'
+  implementation 'com.google.mlkit:barcode-scanning:17.0.3'
   implementation "androidx.camera:camera-core:1.1.0-alpha08"
 }
 

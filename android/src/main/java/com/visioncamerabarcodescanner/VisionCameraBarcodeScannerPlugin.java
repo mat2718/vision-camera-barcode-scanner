@@ -36,6 +36,7 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import android.util.Log;
 
 public class VisionCameraBarcodeScannerPlugin extends FrameProcessorPlugin {
   private BarcodeScanner barcodeScanner = null;
@@ -81,8 +82,8 @@ public class VisionCameraBarcodeScannerPlugin extends FrameProcessorPlugin {
             InputImage invertedImage = InputImage.fromBitmap(invertedBitmap, 0);
             tasks.add(barcodeScanner.process(invertedImage));
           } catch (Exception e) {
+            Log.e("VisionCameraBarcodeScanner", "Error while trying to invert image");
             e.printStackTrace();
-            return null;
           }
         }
       }
@@ -101,6 +102,7 @@ public class VisionCameraBarcodeScannerPlugin extends FrameProcessorPlugin {
         }
         return array;
       } catch (Exception e) {
+        Log.e("VisionCameraBarcodeScanner", "Error while trying to process barcode");
         e.printStackTrace();
       }
     }
@@ -126,6 +128,7 @@ public class VisionCameraBarcodeScannerPlugin extends FrameProcessorPlugin {
       }
 
       if (formatsIndex == 0) {
+        Log.e("VisionCameraBarcodeScanner", "Need to provide at least one valid Barcode format");
         throw new ArrayIndexOutOfBoundsException("Need to provide at least one valid Barcode format");
       }
 
@@ -140,6 +143,7 @@ public class VisionCameraBarcodeScannerPlugin extends FrameProcessorPlugin {
         barcodeScannerFormatsBitmap = formatsBitmap;
       }
     } else {
+      Log.e("VisionCameraBarcodeScanner", "Second parameter must be an Array");
       throw new IllegalArgumentException("Second parameter must be an Array");
     }
   }
@@ -213,7 +217,7 @@ public class VisionCameraBarcodeScannerPlugin extends FrameProcessorPlugin {
 
     map.putMap("content", convertContent(barcode));
     map.putInt("format", barcode.getFormat());
-
+    Log.d("VisionCameraBarcodeScanner", "Barcode: " + barcode.getFormat());
     return map;
   }
 
