@@ -41,13 +41,13 @@
     "ios",
     "android"
   ],
-  "repository": "https://github.com/mat2718/react-native-vision-camera-barcode-scanner",
+  "repository": "https://github.com/mat2718/vision-camera-barcode-scanner",
   "author": "Matthew Terry <matthewterry68.mt@gmail.com> (https://github.com/mat2718)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/mat2718/react-native-vision-camera-barcode-scanner/issues"
+    "url": "https://github.com/mat2718/vision-camera-barcode-scanner/issues"
   },
-  "homepage": "https://github.com/mat2718/react-native-vision-camera-barcode-scanner#readme",
+  "homepage": "https://github.com/mat2718/vision-camera-barcode-scanner#readme",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },
