@@ -39,12 +39,17 @@ class VisionCameraBarcodeScannerPlugin internal constructor() :
     override fun callback(frame: ImageProxy, params: Array<Any>): Any? {
         @SuppressLint("UnsafeOptInUsageError") 
         val mediaImage: Image? = frame.getImage()
+        val array = WritableNativeArray()
         if (mediaImage != null) {
-            val image: InputImage =
-                InputImage.fromMediaImage(mediaImage, frame.getImageInfo().getRotationDegrees())
+            val image: InputImage = InputImage.fromMediaImage(mediaImage, frame.getImageInfo().getRotationDegrees())
             try {
-                val array = WritableNativeArray()
-                val barcodeScanner = BarcodeScanning.getClient()
+                val barcodeScanner = BarcodeScanning.getClient(
+                    BarcodeScannerOptions.Builder()
+                        .setBarcodeFormats(
+                            Barcode.FORMAT_ALL_FORMATS
+                        )
+                        .build()
+                )
                 val task = barcodeScanner.process(image)
                 // val barcodes= Tasks.await(task)
                 .addOnSuccessListener { barcodes ->
@@ -53,16 +58,15 @@ class VisionCameraBarcodeScannerPlugin internal constructor() :
                     }
                 }
                 .addOnFailureListener { e ->
-                    Log.e("VisionCameraBarcodeScanner", "Error while trying to process barcode")
+                    Log.e("VisionCameraBarcodeScanner", "addOnFailureListener:: Error while trying to process barcode")
                     e.printStackTrace()
                 }
-                return array
             } catch (e: Exception) {
                 Log.e("VisionCameraBarcodeScanner", "Error while trying to process barcode")
                 e.printStackTrace()
             }
         }
-        return null
+        return array
     }
 
     
