@@ -1,5 +1,5 @@
 /**
- * @see https://developers.google.com/android/reference/com/google/mlkit/vision/barcode/Barcode.BarcodeFormat
+ * @see https://developers.google.com/android/reference/com/google/mlkit/vision/barcode/common/Barcode.BarcodeFormat
  */
 export enum BarcodeFormat {
   UNKNOWN = -1,
@@ -20,7 +20,7 @@ export enum BarcodeFormat {
 }
 
 /**
- * @see https://developers.google.com/android/reference/com/google/mlkit/vision/barcode/Barcode.BarcodeValueType
+ * @see https://developers.google.com/android/reference/com/google/mlkit/vision/barcode/common/Barcode.BarcodeValueType
  */
 export enum BarcodeValueType {
   UNKNOWN = 0,
@@ -39,7 +39,7 @@ export enum BarcodeValueType {
 }
 
 /**
- * @see https://developers.google.com/android/reference/com/google/mlkit/vision/barcode/Barcode.Address.AddressType
+ * @see https://developers.google.com/android/reference/com/google/mlkit/vision/barcode/common/Barcode.Address.AddressType
  */
 export enum AddressType {
   UNKNOWN = 0,
@@ -48,7 +48,7 @@ export enum AddressType {
 }
 
 /**
- * @see https://developers.google.com/android/reference/com/google/mlkit/vision/barcode/Barcode.Address
+ * @see https://developers.google.com/android/reference/com/google/mlkit/vision/barcode/common/Barcode.Address
  */
 export interface Address {
   addressLines?: string[];
@@ -56,7 +56,7 @@ export interface Address {
 }
 
 /**
- * @see https://developers.google.com/android/reference/com/google/mlkit/vision/barcode/Barcode.PersonName
+ * @see https://developers.google.com/android/reference/com/google/mlkit/vision/barcode/common/Barcode.PersonName
  */
 export interface PersonName {
   first?: string;
@@ -69,7 +69,7 @@ export interface PersonName {
 }
 
 /**
- * @see https://developers.google.com/android/reference/com/google/mlkit/vision/barcode/Barcode.ContactInfo
+ * @see https://developers.google.com/android/reference/com/google/mlkit/vision/barcode/common/Barcode.ContactInfo
  */
 export interface ContactInfo {
   addresses?: Address[];
@@ -82,7 +82,7 @@ export interface ContactInfo {
 }
 
 /**
- * @see https://developers.google.com/android/reference/com/google/mlkit/vision/barcode/Barcode.Email.FormatType
+ * @see https://developers.google.com/android/reference/com/google/mlkit/vision/barcode/common/Barcode.Email.FormatType
  */
 export enum EmailType {
   UNKNOWN = 0,
@@ -91,7 +91,7 @@ export enum EmailType {
 }
 
 /**
- * @see https://developers.google.com/android/reference/com/google/mlkit/vision/barcode/Barcode.Email
+ * @see https://developers.google.com/android/reference/com/google/mlkit/vision/barcode/common/Barcode.Email
  */
 export interface Email {
   address?: string;
@@ -101,7 +101,7 @@ export interface Email {
 }
 
 /**
- * @see https://developers.google.com/android/reference/com/google/mlkit/vision/barcode/Barcode.Phone.FormatType
+ * @see https://developers.google.com/android/reference/com/google/mlkit/vision/barcode/common/Barcode.Phone.FormatType
  */
 export enum PhoneType {
   UNKNOWN = 0,
@@ -112,7 +112,7 @@ export enum PhoneType {
 }
 
 /**
- * @see https://developers.google.com/android/reference/com/google/mlkit/vision/barcode/Barcode.Phone
+ * @see https://developers.google.com/android/reference/com/google/mlkit/vision/barcode/common/Barcode.Phone
  */
 export interface Phone {
   number?: string;
@@ -120,7 +120,7 @@ export interface Phone {
 }
 
 /**
- * @see https://developers.google.com/android/reference/com/google/mlkit/vision/barcode/Barcode.Sms
+ * @see https://developers.google.com/android/reference/com/google/mlkit/vision/barcode/common/Barcode.Sms
  */
 export interface Sms {
   message?: string;
@@ -128,7 +128,7 @@ export interface Sms {
 }
 
 /**
- * @see https://developers.google.com/android/reference/com/google/mlkit/vision/barcode/Barcode.UrlBookmark
+ * @see https://developers.google.com/android/reference/com/google/mlkit/vision/barcode/common/Barcode.UrlBookmark
  */
 export interface UrlBookmark {
   title?: string;
@@ -136,7 +136,7 @@ export interface UrlBookmark {
 }
 
 /**
- * @see https://developers.google.com/android/reference/com/google/mlkit/vision/barcode/Barcode.WiFi.EncryptionType
+ * @see https://developers.google.com/android/reference/com/google/mlkit/vision/barcode/common/Barcode.WiFi.EncryptionType
  */
 export enum EncryptionType {
   OPEN = 1,
@@ -145,7 +145,7 @@ export enum EncryptionType {
 }
 
 /**
- * @see https://developers.google.com/android/reference/com/google/mlkit/vision/barcode/Barcode.WiFi
+ * @see https://developers.google.com/android/reference/com/google/mlkit/vision/barcode/common/Barcode.WiFi
  */
 export interface Wifi {
   encryptionType?: EncryptionType;
@@ -154,7 +154,7 @@ export interface Wifi {
 }
 
 /**
- * @see https://developers.google.com/android/reference/com/google/mlkit/vision/barcode/Barcode.GeoPoint
+ * @see https://developers.google.com/android/reference/com/google/mlkit/vision/barcode/common/Barcode.GeoPoint
  */
 export interface GeoPoint {
   lat?: number;
@@ -162,7 +162,7 @@ export interface GeoPoint {
 }
 
 /**
- * @see https://developers.google.com/android/reference/com/google/mlkit/vision/barcode/Barcode.CalendarDateTime
+ * @see https://developers.google.com/android/reference/com/google/mlkit/vision/barcode/common/Barcode.CalendarDateTime
  */
 export interface Date {
   day: number;
@@ -176,7 +176,7 @@ export interface Date {
 }
 
 /**
- * @see https://developers.google.com/android/reference/com/google/mlkit/vision/barcode/Barcode.CalendarEvent
+ * @see https://developers.google.com/android/reference/com/google/mlkit/vision/barcode/common/Barcode.CalendarEvent
  */
 export interface CalendarEvent {
   description?: string;
@@ -189,7 +189,7 @@ export interface CalendarEvent {
 }
 
 /**
- * @see https://developers.google.com/android/reference/com/google/mlkit/vision/barcode/Barcode.DriverLicense
+ * @see https://developers.google.com/android/reference/com/google/mlkit/vision/barcode/common/Barcode.DriverLicense
  */
 export interface DriverLicense {
   addressCity?: string;
@@ -253,7 +253,7 @@ export interface Point {
 }
 
 /**
- * @see https://developers.google.com/android/reference/com/google/mlkit/vision/barcode/Barcode
+ * @see https://developers.google.com/android/reference/com/google/mlkit/vision/barcode/common/Barcode
  */
 export type Barcode = {
   boundingBox?: Rect;

@@ -62,7 +62,12 @@ public class VisionCameraBarcodeScannerPlugin extends FrameProcessorPlugin {
 
   @Override
   public Object callback(ImageProxy frame, Object[] params) {
-    createBarcodeInstance(params);
+    try {
+      createBarcodeInstance(params); 
+    } catch (Exception e) {
+      Log.e("VisionCameraBarcodeScanner", "Error while trying to create barcode instance");
+      e.printStackTrace();
+    }
 
     @SuppressLint("UnsafeOptInUsageError")
     Image mediaImage = frame.getImage();
@@ -87,9 +92,12 @@ public class VisionCameraBarcodeScannerPlugin extends FrameProcessorPlugin {
           }
         }
       }
-
-      tasks.add(barcodeScanner.process(image));
-
+      try {
+        tasks.add(barcodeScanner.process(image));
+      } catch (Exception e) {
+        Log.e("VisionCameraBarcodeScanner", "Error while trying to process barcode");
+        e.printStackTrace();
+      }
       try {
         ArrayList<Barcode> barcodes = new ArrayList<Barcode>();
         for (Task<List<Barcode>> task : tasks) {
@@ -133,14 +141,18 @@ public class VisionCameraBarcodeScannerPlugin extends FrameProcessorPlugin {
       }
 
       if (barcodeScanner == null || formatsBitmap != barcodeScannerFormatsBitmap) {
-        barcodeScanner = BarcodeScanning.getClient(
-          new BarcodeScannerOptions.Builder()
-            .setBarcodeFormats(
-              formats[0],
-              Arrays.copyOfRange(formats, 1, formatsIndex)
-            )
-            .build());
-        barcodeScannerFormatsBitmap = formatsBitmap;
+        try {
+          barcodeScanner = BarcodeScanning.getClient(
+            new BarcodeScannerOptions.Builder()
+              .setBarcodeFormats(
+                formats[0],
+                Arrays.copyOfRange(formats, 1, formatsIndex)
+              )
+              .build());
+          barcodeScannerFormatsBitmap = formatsBitmap;
+        } catch (Exception e) {
+          Log.e("VisionCameraBarcodeScanner", "Error while trying to create barcode scanner");
+        }
       }
     } else {
       Log.e("VisionCameraBarcodeScanner", "Second parameter must be an Array");
